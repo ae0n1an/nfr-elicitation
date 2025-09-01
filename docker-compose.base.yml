@@ -1,0 +1,12 @@
+services:
+  my-app-base:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      https_proxy: http://165.225.226.14:443
+      http_proxy: http://165.225.226.14:80
+      no_proxy: localhost,127.0.0.0/8,colesmyer.com.au,cmltd.net.au
+    profiles: [release]

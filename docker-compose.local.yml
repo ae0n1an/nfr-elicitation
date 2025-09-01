@@ -1,0 +1,21 @@
+x-my-app:
+  &default-my-app
+  extends:
+    file: docker-compose.base.yml
+    service: my-app-base
+  build:
+    args:
+      https_proxy: http://165.225.226.14:443
+      http_proxy: http://165.225.226.14:80
+      no_proxy: localhost,127.0.0.0/8,colesmyer.com.au,cmltd.net.au
+  # image: colesgroup-cost-nonprod-docker-local.jfrog.io/my-app:latest
+
+services:
+  my-app-latest:
+    *default-my-app
+  my-app-version:
+    << : *default-my-app
+    image: colesgroup-cost-nonprod-docker-local.jfrog.io/my-app:${VERSION_BASE}
+    profiles:
+      - always
+      - release
