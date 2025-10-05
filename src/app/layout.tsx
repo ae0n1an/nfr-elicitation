@@ -1,9 +1,12 @@
-import "@/styles/globals.css";
+import "./globals.css";
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -11,19 +14,36 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
 });
 
+const inter = Inter({ subsets: ["latin"] });
+
+//className={`${geist.variable}`}>
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+    <html lang="en" suppressHydrationWarning> 
+        <body className={cn("min-h-screen bg-background", inter.className)}>
+
+        <TRPCReactProvider>
+          
+          {children}
+         
+          </TRPCReactProvider>
       </body>
     </html>
+     </ThemeProvider>
   );
 }

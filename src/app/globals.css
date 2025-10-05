@@ -1,5 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "tailwindcss";
 @import "tw-animate-css";
+
+html {
+  scroll-behavior: smooth;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -115,6 +123,13 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+body {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -123,3 +138,50 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Container centering and padding */
+@layer components {
+  .container {
+    margin-left: auto;  /* center horizontally */
+    margin-right: auto; /* center horizontally */
+    padding: 1.5rem;  /* equivalent to padding: "1.5rem" in config */
+    max-width: 100%;   /* default full width */
+  }
+
+  /* 2xl breakpoint (1400px max-width) */
+  @media (min-width: 1400px) {
+    .container {
+      max-width: 1400px;
+    }
+  }
+}
+
+
+/* -------------------------
+   Keyframes & Animations
+------------------------- */
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@keyframes collapsible-down {
+  from { height: 0; }
+  to { height: var(--radix-collapsible-content-height); }
+}
+
+@keyframes collapsible-up {
+  from { height: var(--radix-collapsible-content-height); }
+  to { height: 0; }
+}
+
+/* Animation utilities */
+.accordion-down { animation: accordion-down 0.2s ease-out; }
+.accordion-up { animation: accordion-up 0.2s ease-out; }
+.collapsible-down { animation: collapsible-down 0.2s ease-in-out; }
+.collapsible-up { animation: collapsible-up 0.2s ease-in-out; }
