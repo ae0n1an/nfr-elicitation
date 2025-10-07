@@ -29,7 +29,7 @@ export const HeroSection = () => {
             </h1>
           </div>
 
-          <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground">
+          <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground mb-8">
             {`We're more than just a tool, we're a community of passionate
             creators. Get access to exclusive resources, tutorials, and support.`}
           </p>
@@ -43,7 +43,7 @@ export const HeroSection = () => {
             <Button
               asChild
               variant="secondary"
-              className="w-5/6 md:w-1/4 font-bold"
+              className="w-5/6 md:w-1/4 font-bold md:ml-4 mt-4 md:mt-0"
             >
               <Link
                 href="https://github.com/nobruf/shadcn-landing-page.git"
