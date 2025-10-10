@@ -1,5 +1,5 @@
 "use client";
-import { ChevronsDown, Github, Menu } from "lucide-react";
+import { ChevronsDown, Github, LogIn, Menu } from "lucide-react";
 import React from "react";
 import {
   Sheet,
@@ -175,15 +175,18 @@ export const Navbar = () => {
       <div className="hidden lg:flex">
         <ToggleTheme />
 
-        <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
+        <Button asChild size="sm" variant="ghost" aria-label="Login" className="h-auto">
           <Link
             aria-label="View on GitHub"
-            href="https://github.com/nobruf/shadcn-landing-page.git"
+            href="/login"
             target="_blank"
+            className="flex gap-2"
           >
-            <Github className="size-5" />
+              <LogIn className="size-5" />
+              <span className="block lg:hidden"> Login </span>
           </Link>
         </Button>
+        
       </div>
     </header>
   );
