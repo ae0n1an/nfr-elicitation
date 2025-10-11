@@ -28,22 +28,20 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
+    
     <html lang="en" suppressHydrationWarning> 
-        <body className={cn("min-h-screen bg-background", inter.className)}>
-
-        <TRPCReactProvider>
-          
+      <body className={cn("min-h-screen bg-background", inter.className)}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+          <TRPCReactProvider>
           {children}
-         
           </TRPCReactProvider>
+        </ThemeProvider>
       </body>
     </html>
-     </ThemeProvider>
   );
 }

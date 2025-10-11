@@ -179,7 +179,6 @@ export const Navbar = () => {
           <Link
             aria-label="View on GitHub"
             href="/login"
-            target="_blank"
             className="flex gap-2"
           >
               <LogIn className="size-5" />
