@@ -9,7 +9,6 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import Image from "next/image"
 
 export function LoginForm({
   className,
